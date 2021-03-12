@@ -49,7 +49,7 @@ extension TestView {
 // MARK: Private
 private extension TestView {
     func initialize() {
-        backgroundColor = UIColor(integralRed: 242, green: 245, blue: 252)
+        backgroundColor = UIColor.white
     }
     
     static let buttonAttr = TextAttributes()

@@ -27,7 +27,7 @@ final class CoursesView: UIView {
 // MARK: Private
 private extension CoursesView {
     func initialize() {
-        backgroundColor = UIColor(integralRed: 242, green: 245, blue: 252)
+        backgroundColor = UIColor.white
     }
 }
 

@@ -97,7 +97,7 @@ private extension STLinksCell {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
         view.tag = 1
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.layer.cornerRadius = 15.scale
         view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.label.text = "Settings.RateUs".localized
@@ -113,7 +113,7 @@ private extension STLinksCell {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
         view.tag = 2
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.label.text = "Settings.ContactUs".localized
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -127,7 +127,7 @@ private extension STLinksCell {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
         view.tag = 3
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.label.text = "Settings.TermsOfUse".localized
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
@@ -141,7 +141,7 @@ private extension STLinksCell {
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
         view.tag = 4
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.layer.cornerRadius = 15.scale
         view.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         view.label.text = "Settings.PrivacyPolicy".localized

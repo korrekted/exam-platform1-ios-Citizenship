@@ -91,7 +91,7 @@ private extension STCourseCell {
 private extension STCourseCell {
     func makeContainer() -> UIView {
         let view = UIView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.layer.cornerRadius = 15.scale
         view.layer.masksToBounds = true
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -101,7 +101,7 @@ private extension STCourseCell {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(UIColor(integralRed: 95, green: 70, blue: 245))
+            .textColor(UIColor(integralRed: 112, green: 184, blue: 177))
             .font(Fonts.SFProRounded.regular(size: 13.scale))
             .lineHeight(20.scale)
             .letterSpacing(-0.24.scale)

@@ -895,10 +895,10 @@
 		964025A125FA6AC5006A1CBF /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				964025A625FA6AC5006A1CBF /* Views */,
+				964025A425FA6AC5006A1CBF /* Utils */,
 				964025A225FA6AC5006A1CBF /* SettingsView.swift */,
 				964025A325FA6AC5006A1CBF /* SettingsViewModel.swift */,
-				964025A425FA6AC5006A1CBF /* Utils */,
-				964025A625FA6AC5006A1CBF /* Views */,
 				964025AE25FA6AC5006A1CBF /* SettingsViewController.swift */,
 			);
 			path = Settings;
