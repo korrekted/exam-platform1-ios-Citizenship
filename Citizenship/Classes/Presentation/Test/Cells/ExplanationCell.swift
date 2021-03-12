@@ -27,8 +27,8 @@ class ExplanationCell: UITableViewCell {
 extension ExplanationCell {
     func confugure(explanation: String) {
         let attr = TextAttributes()
-            .font(Fonts.SFProRounded.bold(size: 17.scale))
-            .textColor(.black)
+            .font(Fonts.SFProRounded.regular(size: 17.scale))
+            .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
             .lineHeight(20.scale)
         
         explanationLabel.attributedText = explanation.attributed(with: attr)
@@ -67,7 +67,7 @@ private extension ExplanationCell {
         let view = UILabel()
         let attr = TextAttributes()
             .font(Fonts.SFProRounded.bold(size: 17.scale))
-            .textColor(UIColor(integralRed: 95, green: 70, blue: 245))
+            .textColor(UIColor(integralRed: 145, green: 200, blue: 195))
             .lineHeight(20.scale)
         
         view.attributedText = "Question.Explanation".localized.attributed(with: attr)

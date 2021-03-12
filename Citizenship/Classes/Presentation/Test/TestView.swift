@@ -120,7 +120,7 @@ private extension TestView {
     
     func makeProgressView() -> UIProgressView {
         let view = UIProgressView()
-        let color = UIColor(integralRed: 95, green: 70, blue: 245)
+        let color = UIColor(integralRed: 145, green: 200, blue: 195)
         view.trackTintColor = color.withAlphaComponent(0.3)
         view.progressTintColor = color
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -141,18 +141,18 @@ private extension TestView {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30.scale
-        view.backgroundColor = UIColor(integralRed: 95, green: 70, blue: 245)
+        view.backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
         addSubview(view)
         return view
     }
     
     func makeNextButton() -> UIButton {
         let view = UIButton()
-        let color = UIColor(integralRed: 30, green: 39, blue: 85)
+        let color = UIColor.white
         
         view.setImage(UIImage(named: "Question.Next"), for: .normal)
         view.tintColor = color
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
         view.layer.cornerRadius = 20.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

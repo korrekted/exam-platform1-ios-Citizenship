@@ -73,13 +73,13 @@ private extension AnswerView {
     func setState(state: State) {
         switch state {
         case .initial:
-            layer.borderWidth = 0
-            layer.borderColor = UIColor.clear.cgColor
+            layer.borderWidth = 1.scale
+            layer.borderColor = UIColor(integralRed: 218, green: 218, blue: 218).cgColor
             backgroundColor = .white
             iconView.image = nil
         case .selected:
             layer.borderWidth = 3.scale
-            layer.borderColor = UIColor(integralRed: 95, green: 70, blue: 245).cgColor
+            layer.borderColor = UIColor(integralRed: 145, green: 200, blue: 195).cgColor
             backgroundColor = .white
             iconView.image = nil
         case .correct:
