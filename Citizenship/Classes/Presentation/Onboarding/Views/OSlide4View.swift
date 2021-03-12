@@ -138,8 +138,8 @@ private extension OSlide4View {
             .textAlignment(.center)
         
         let view = UIButton()
-        view.backgroundColor = UIColor(integralRed: 95, green: 70, blue: 245)
-        view.layer.cornerRadius = 30.scale
+        view.backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
+        view.layer.cornerRadius = 16.scale
         view.setAttributedTitle("Onboarding.Proceed".localized.attributed(with: attrs), for: .normal)
         view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false

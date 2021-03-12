@@ -71,6 +71,7 @@ private extension OSlide1View {
             .textColor(UIColor.black)
             .font(Fonts.SFProRounded.bold(size: 30.scale))
             .lineHeight(35.scale)
+            .textAlignment(.center)
         
         let view = UILabel()
         view.numberOfLines = 0
@@ -83,8 +84,9 @@ private extension OSlide1View {
     func makeText2Label() -> UILabel {
         let attrs = TextAttributes()
             .textColor(UIColor.black)
-            .font(Fonts.SFProRounded.semiBold(size: 17.scale))
+            .font(Fonts.SFProRounded.semiBold(size: 19.scale))
             .lineHeight(22.scale)
+            .textAlignment(.center)
         
         let view = UILabel()
         view.numberOfLines = 0
@@ -102,8 +104,8 @@ private extension OSlide1View {
             .textAlignment(.center)
         
         let view = UIButton()
-        view.backgroundColor = UIColor(integralRed: 95, green: 70, blue: 245)
-        view.layer.cornerRadius = 30.scale
+        view.backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
+        view.layer.cornerRadius = 16.scale
         view.setAttributedTitle("Onboarding.Slide1.Button".localized.attributed(with: attrs), for: .normal)
         view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false

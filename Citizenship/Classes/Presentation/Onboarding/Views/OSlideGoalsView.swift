@@ -1,5 +1,5 @@
 //
-//  OSlide6View.swift
+//  OSlide9View.swift
 //  Nursing
 //
 //  Created by Andrey Chernyshev on 24.01.2021.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-final class OSlide6View: OSlideView {
+final class OSlideGoalsView: OSlideView {
     lazy var titleLabel = makeTitleLabel()
-    lazy var cell1 = makeCell(title: "Onboarding.Slide6.Cell1", tag: 1)
-    lazy var cell2 = makeCell(title: "Onboarding.Slide6.Cell2", tag: 2)
-    lazy var cell3 = makeCell(title: "Onboarding.Slide6.Cell3", tag: 3)
-    lazy var cell4 = makeCell(title: "Onboarding.Slide6.Cell4", tag: 4)
-    lazy var cell5 = makeCell(title: "Onboarding.Slide6.Cell5", tag: 5)
+    lazy var tag1 = makeTag(title: "Onboarding.SlideGoals.Tag1", tag: 1)
+    lazy var tag2 = makeTag(title: "Onboarding.SlideGoals.Tag2", tag: 2)
+    lazy var tag3 = makeTag(title: "Onboarding.SlideGoals.Tag3", tag: 3)
+    lazy var tag4 = makeTag(title: "Onboarding.SlideGoals.Tag4", tag: 4)
     lazy var button = makeButton()
     
     override init(step: OnboardingView.Step) {
@@ -28,65 +27,56 @@ final class OSlide6View: OSlideView {
 }
 
 // MARK: Private
-private extension OSlide6View {
+private extension OSlideGoalsView {
     @objc
     func selected(tapGesture: UITapGestureRecognizer) {
-        let views = [cell1, cell2, cell3, cell4, cell5]
-        
-        views.forEach { $0.isSelected = false }
-        
-        views.first(where: { $0.tag == tapGesture.view?.tag })?.isSelected = true
-    }
-    
-    @objc
-    func tapped() {
-        let views = [cell1, cell2, cell3, cell4, cell5]
-        
-        guard views.contains(where: { $0.isSelected }) else {
+        guard let tagView = tapGesture.view as? OSlideGoalsTagView else {
             return
         }
         
-        onNext()
+        tagView.isSelected = !tagView.isSelected
+        
+        SDKStorage.shared
+            .amplitudeManager
+            .logEvent(name: "Improve Tap", parameters: [:])
     }
 }
 
 // MARK: Make constraints
-private extension OSlide6View {
+private extension OSlideGoalsView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 134.scale : 50.scale)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 134.scale : 70.scale)
         ])
         
         NSLayoutConstraint.activate([
-            cell1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
-            cell1.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            cell1.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 233.scale : 130.scale)
+            tag1.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.scale),
+            tag1.widthAnchor.constraint(equalToConstant: 122.scale),
+            tag1.heightAnchor.constraint(equalToConstant: 122.scale),
+            tag1.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 334.scale : 251.scale)
         ])
         
         NSLayoutConstraint.activate([
-            cell2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
-            cell2.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            cell2.topAnchor.constraint(equalTo: cell1.bottomAnchor, constant: 15.scale)
+            tag2.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 129.scale),
+            tag2.widthAnchor.constraint(equalToConstant: 156.scale),
+            tag2.heightAnchor.constraint(equalToConstant: 156.scale),
+            tag2.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 262.scale : 179.scale)
         ])
         
         NSLayoutConstraint.activate([
-            cell3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
-            cell3.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            cell3.topAnchor.constraint(equalTo: cell2.bottomAnchor, constant: 15.scale)
+            tag3.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 105.scale),
+            tag3.widthAnchor.constraint(equalToConstant: 121.scale),
+            tag3.heightAnchor.constraint(equalToConstant: 121.scale),
+            tag3.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 428.scale : 345.scale)
         ])
         
         NSLayoutConstraint.activate([
-            cell4.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
-            cell4.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            cell4.topAnchor.constraint(equalTo: cell3.bottomAnchor, constant: 15.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            cell5.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 17.scale),
-            cell5.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -17.scale),
-            cell5.topAnchor.constraint(equalTo: cell4.bottomAnchor, constant: 15.scale)
+            tag4.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 231.scale),
+            tag4.widthAnchor.constraint(equalToConstant: 131.scale),
+            tag4.heightAnchor.constraint(equalToConstant: 131.scale),
+            tag4.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 390.scale : 307.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -99,7 +89,7 @@ private extension OSlide6View {
 }
 
 // MARK: Lazy initialization
-private extension OSlide6View {
+private extension OSlideGoalsView {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
             .textColor(UIColor.black)
@@ -109,22 +99,20 @@ private extension OSlide6View {
         
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = "Onboarding.Slide6.Title".localized.attributed(with: attrs)
+        view.attributedText = "Onboarding.SlideGoals.Title".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
     }
     
-    func makeCell(title: String, tag: Int) -> OSlide6Cell {
+    func makeTag(title: String, tag: Int) -> OSlideGoalsTagView {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selected(tapGesture:)))
         
-        let view = OSlide6Cell()
+        let view = OSlideGoalsTagView()
         view.tag = tag
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
         view.isSelected = false
-        view.backgroundColor = UIColor.white
-        view.layer.cornerRadius = 20.scale
         view.label.text = title.localized
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -142,7 +130,7 @@ private extension OSlide6View {
         view.backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
         view.layer.cornerRadius = 16.scale
         view.setAttributedTitle("Onboarding.Proceed".localized.attributed(with: attrs), for: .normal)
-        view.addTarget(self, action: #selector(tapped), for: .touchUpInside)
+        view.addTarget(self, action: #selector(onNext), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

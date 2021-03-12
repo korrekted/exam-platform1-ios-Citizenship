@@ -38,23 +38,24 @@ private extension OSlideQuestionView {
         ])
         
         NSLayoutConstraint.activate([
-            questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
-            questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
-            questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 321.scale : 240.scale)
-        ])
-        
-        NSLayoutConstraint.activate([
-            yesButton.widthAnchor.constraint(equalToConstant: 93.scale),
-            yesButton.heightAnchor.constraint(equalToConstant: 93.scale),
-            yesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65.scale),
-            yesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -70.scale : -30.scale)
+            questionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.scale),
+            questionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20.scale),
+            questionLabel.topAnchor.constraint(equalTo: topAnchor, constant: ScreenSize.isIphoneXFamily ? 321.scale : 240.scale),
+            questionLabel.heightAnchor.constraint(equalToConstant: 153.scale)
         ])
         
         NSLayoutConstraint.activate([
             noButton.widthAnchor.constraint(equalToConstant: 93.scale),
             noButton.heightAnchor.constraint(equalToConstant: 93.scale),
-            noButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65.scale),
+            noButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 65.scale),
             noButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -70.scale : -30.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            yesButton.widthAnchor.constraint(equalToConstant: 93.scale),
+            yesButton.heightAnchor.constraint(equalToConstant: 93.scale),
+            yesButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -65.scale),
+            yesButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -70.scale : -30.scale)
         ])
     }
 }
@@ -70,7 +71,7 @@ private extension OSlideQuestionView {
         
         let view = UILabel()
         view.numberOfLines = 0
-        view.attributedText = "Onboarding.Slide10.Title".localized.attributed(with: attrs)
+        view.attributedText = "Onboarding.SlideQuestion.Title".localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -78,20 +79,22 @@ private extension OSlideQuestionView {
     
     func makeQuestionLabel() -> PaddingLabel {
         let attrs = TextAttributes()
-            .textColor(UIColor.black)
-            .font(Fonts.SFProRounded.bold(size: 27.scale))
-            .lineHeight(32.scale)
+            .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
+            .font(Fonts.SFProRounded.regular(size: 19.scale))
+            .lineHeight(26.scale)
             .textAlignment(.center)
         
         let view = PaddingLabel()
-        view.numberOfLines = 0
         view.leftInset = 15.scale
         view.rightInset = 15.scale
         view.topInset = 36.scale
         view.bottomInset = 36.scale
+        view.numberOfLines = 0
         view.layer.cornerRadius = 20.scale
         view.layer.masksToBounds = true
-        view.backgroundColor = UIColor.white
+        view.layer.borderWidth = 1.scale
+        view.layer.borderColor = UIColor(integralRed: 218, green: 218, blue: 218).cgColor
+        view.backgroundColor = UIColor.clear
         view.attributedText = questionKey.localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -104,7 +107,7 @@ private extension OSlideQuestionView {
         let view = OSlideQuestiionButton()
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
-        view.imageView.image = UIImage(named: "Onboarding.Slide10.Yes")
+        view.imageView.image = UIImage(named: "Onboarding.SlideQuestion.Yes")
         view.label.text = "Onboarding.Yes".localized
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
@@ -117,7 +120,7 @@ private extension OSlideQuestionView {
         let view = OSlideQuestiionButton()
         view.isUserInteractionEnabled = true
         view.addGestureRecognizer(tapGesture)
-        view.imageView.image = UIImage(named: "Onboarding.Slide10.No")
+        view.imageView.image = UIImage(named: "Onboarding.SlideQuestion.No")
         view.label.text = "Onboarding.No".localized
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)

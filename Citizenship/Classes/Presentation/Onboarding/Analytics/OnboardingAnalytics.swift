@@ -12,33 +12,31 @@ final class OnboardingAnalytics {
         switch step {
         case .slide1:
             name = "Welcome Screen"
-        case .slide2:
+        case .gender:
             name = "Gender Screen"
-        case .slide3:
+        case .age:
             name = "Age Screen"
-        case .slide4:
+        case .goals:
             name = "Goals Screen"
-        case .slide5:
+        case .date:
             name = "When Exam Screen"
-        case .slide6:
-            name = "Level Screen"
-        case .slide7:
+        case .country:
+            name = "What Country Screencountry"
+        case .time:
             name = "Test Time Screen"
-        case .slide8:
+        case .testsCount:
             name = "Tests Number Screen"
-        case .slide9:
-            name = "Improve Screen"
-        case .slide10:
+        case .question1:
             name = "Question 1 Screen"
-        case .slide11:
+        case .question2:
             name = "Question 2 Screen"
-        case .slide12:
+        case .question3:
             name = "Question 3 Screen"
-        case .slide13:
+        case .question4:
             name = "Question 4 Screen"
-        case .slide14:
+        case .preloader:
             name = "Plan Preparing Screen"
-        case .slide15:
+        case .plan:
             name = "Personal Plan Screen"
         }
         

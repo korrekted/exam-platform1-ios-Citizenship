@@ -184,27 +184,7 @@ public class PIDatePicker: UIControl, UIPickerViewDataSource, UIPickerViewDelega
      Refreshes the ordering of components based on the current locale. Calling this function will not refresh the picker view.
      */
     private func refreshComponentOrdering() {
-        guard var componentOrdering = DateFormatter.dateFormat(fromTemplate: "yMMMMd", options: 0, locale: self.locale) else {
-            return
-        }
-        
-        let firstComponentOrderingString = componentOrdering[componentOrdering.index(componentOrdering.startIndex, offsetBy: 0)]
-        let lastComponentOrderingString = componentOrdering[componentOrdering.index(componentOrdering.startIndex, offsetBy: componentOrdering.count - 1)]
-        
-        var characterSet = CharacterSet(charactersIn: String(firstComponentOrderingString) + String(lastComponentOrderingString))
-        characterSet = characterSet.union(CharacterSet.whitespacesAndNewlines).union(CharacterSet.punctuationCharacters)
-
-        componentOrdering = componentOrdering.trimmingCharacters(in: characterSet)
-        let remainingValue = componentOrdering[componentOrdering.index(componentOrdering.startIndex, offsetBy: 0)]
-        
-        guard
-            let firstComponent = PIDatePickerComponents(rawValue: firstComponentOrderingString),
-            let secondComponent = PIDatePickerComponents(rawValue: remainingValue),
-            let lastComponent = PIDatePickerComponents(rawValue: lastComponentOrderingString) else {
-                return
-        }
-        
-        self.datePickerComponentOrdering = [firstComponent, secondComponent, lastComponent]
+        self.datePickerComponentOrdering = [.day, .month, .year]
     }
     
     /**
@@ -518,17 +498,22 @@ public class PIDatePicker: UIControl, UIPickerViewDataSource, UIPickerViewDelega
     public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = view as? UILabel == nil ? UILabel() : view as! UILabel
         
-        label.font = self.font
-        label.textColor = self.textColor
-        label.text = self.titleForRow(row, inComponentIndex: component)
-        label.textAlignment = self.componentAtIndex(component) == .month ? NSTextAlignment.left : NSTextAlignment.right
-        label.textColor = self.isRowEnabled(row, forComponent: self.componentAtIndex(component)) ? self.textColor : self.disabledTextColor
+        let attrs = TextAttributes()
+            .font(self.font)
+            .textColor(self.isRowEnabled(row, forComponent: self.componentAtIndex(component)) ? self.textColor : self.disabledTextColor)
+            .textAlignment(.center)
+        
+        label.attributedText = self.titleForRow(row, inComponentIndex: component).attributed(with: attrs)
         
         return label
     }
     
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        48.scale
+    }
+    
     public func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
-        let widthBuffer = 25.0
+        let widthBuffer = Double(25.scale)
         
         let calendarComponent = self.componentAtIndex(component)
         let stringSizingAttributes = [NSAttributedString.Key.font : self.font]
