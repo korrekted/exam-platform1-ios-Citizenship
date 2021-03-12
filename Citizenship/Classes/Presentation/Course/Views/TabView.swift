@@ -63,7 +63,7 @@ private extension TabView {
         ])
         
         NSLayoutConstraint.activate([
-            statsItem.leadingAnchor.constraint(equalTo: studyItem.trailingAnchor),
+            statsItem.leadingAnchor.constraint(equalTo: studyItem.trailingAnchor, constant: 2.scale),
             statsItem.bottomAnchor.constraint(equalTo: bottomAnchor),
             statsItem.topAnchor.constraint(equalTo: topAnchor),
             statsItem.trailingAnchor.constraint(equalTo: trailingAnchor)
@@ -75,14 +75,14 @@ private extension TabView {
 private extension TabView {
     func makeItem(image: String, title: String) -> TabItemView {
         let attrs = TextAttributes()
-            .font(Fonts.SFProRounded.regular(size: 10.scale))
-            .textColor(UIColor(integralRed: 95, green: 70, blue: 245))
+            .font(Fonts.SFProRounded.semiBold(size: 10.scale))
+            .textColor(UIColor(integralRed: 112, green: 184, blue: 177))
             .letterSpacing(-0.24.scale)
             .lineHeight(11.93.scale)
             .textAlignment(.center)
         
         let view = TabItemView()
-        view.backgroundColor = UIColor.clear
+        view.backgroundColor = UIColor.white
         view.imageView.image = UIImage(named: image)
         view.label.attributedText = title.localized.attributed(with: attrs)
         view.translatesAutoresizingMaskIntoConstraints = false

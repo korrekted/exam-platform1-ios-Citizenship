@@ -12,6 +12,7 @@ final class TabItemView: UIView {
         case selected, deselected
     }
     
+    lazy var colorView = makeColorView()
     lazy var imageView = makeImageView()
     lazy var label = makeLabel()
     
@@ -39,9 +40,9 @@ private extension TabItemView {
         
         switch state {
         case .selected:
-            color = UIColor(integralRed: 95, green: 70, blue: 245)
+            color = UIColor(integralRed: 112, green: 184, blue: 177)
         case .deselected:
-            color = UIColor(integralRed: 95, green: 70, blue: 245, alpha: 0.3)
+            color = UIColor(integralRed: 112, green: 184, blue: 177, alpha: 0.3)
         }
         
         label.textColor = color
@@ -54,6 +55,13 @@ private extension TabItemView {
 // MARK: Make constraints
 private extension TabItemView {
     func makeConstraints() {
+        NSLayoutConstraint.activate([
+            colorView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            colorView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            colorView.topAnchor.constraint(equalTo: topAnchor),
+            colorView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 2.scale)
+        ])
+        
         NSLayoutConstraint.activate([
             imageView.widthAnchor.constraint(equalToConstant: 24.scale),
             imageView.heightAnchor.constraint(equalToConstant: 24.scale),
@@ -71,6 +79,14 @@ private extension TabItemView {
 
 // MARK: Lazy initialization
 private extension TabItemView {
+    func makeColorView() -> UIView {
+        let view = UIView()
+        view.backgroundColor = UIColor(integralRed: 233, green: 215, blue: 219)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
     func makeImageView() -> UIImageView {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit

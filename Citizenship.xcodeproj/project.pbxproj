@@ -946,9 +946,9 @@
 		964025B325FA6AC5006A1CBF /* Study */ = {
 			isa = PBXGroup;
 			children = (
+				964025B625FA6AC5006A1CBF /* Views */,
 				964025B425FA6AC5006A1CBF /* StudyViewModel.swift */,
 				964025B525FA6AC5006A1CBF /* StudyViewController.swift */,
-				964025B625FA6AC5006A1CBF /* Views */,
 				964025C425FA6AC5006A1CBF /* StudyView.swift */,
 			);
 			path = Study;
@@ -1005,10 +1005,10 @@
 		964025C525FA6AC5006A1CBF /* Course */ = {
 			isa = PBXGroup;
 			children = (
+				964025C925FA6AC5006A1CBF /* Views */,
 				964025C625FA6AC5006A1CBF /* CourseViewController.swift */,
 				964025C725FA6AC5006A1CBF /* CourseView.swift */,
 				964025C825FA6AC5006A1CBF /* CourseViewCoordinator.swift */,
-				964025C925FA6AC5006A1CBF /* Views */,
 			);
 			path = Course;
 			sourceTree = "<group>";
@@ -1155,10 +1155,10 @@
 		9640260425FA6AC5006A1CBF /* Courses */ = {
 			isa = PBXGroup;
 			children = (
+				9640260825FA6AC5006A1CBF /* Views */,
 				9640260525FA6AC5006A1CBF /* CoursesView.swift */,
 				9640260625FA6AC5006A1CBF /* CoursesViewModel.swift */,
 				9640260725FA6AC5006A1CBF /* CoursesViewController.swift */,
-				9640260825FA6AC5006A1CBF /* Views */,
 			);
 			path = Courses;
 			sourceTree = "<group>";
