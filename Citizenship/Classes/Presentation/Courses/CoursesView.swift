@@ -60,9 +60,10 @@ private extension CoursesView {
 private extension CoursesView {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(UIColor.black)
-            .font(Fonts.SFProRounded.bold(size: 34.scale))
-            .lineHeight(40.scale)
+            .textColor(UIColor(integralRed: 31, green: 31, blue: 31))
+            .font(Fonts.SFProRounded.bold(size: 28.scale))
+            .lineHeight(33.scale)
+            .textAlignment(.center)
         
         let view = UILabel()
         view.numberOfLines = 0
