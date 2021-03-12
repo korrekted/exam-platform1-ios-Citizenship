@@ -59,7 +59,7 @@ final class PaygateMainView: UIView {
 // MARK: Private
 private extension PaygateMainView {
     func initialize() {
-        backgroundColor = UIColor(integralRed: 242, green: 245, blue: 252)
+        backgroundColor = UIColor(integralRed: 145, green: 200, blue: 195)
     }
     
     @objc
@@ -192,7 +192,7 @@ private extension PaygateMainView {
     
     func makeRestoreButton() -> UIButton {
         let attrs = TextAttributes()
-            .textColor(UIColor.black)
+            .textColor(UIColor.white)
             .font(Fonts.SFProRounded.regular(size: 13.scale))
             .letterSpacing(-0.6.scale)
         
@@ -215,7 +215,7 @@ private extension PaygateMainView {
     
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(UIColor.black)
+            .textColor(UIColor.white)
             .font(Fonts.SFProRounded.bold(size: 28.scale))
             .lineHeight(ScreenSize.isIphoneXFamily ? 41.scale : 30.scale)
             .textAlignment(.center)
@@ -241,7 +241,7 @@ private extension PaygateMainView {
         let view = PaygateOptionView()
         view.alpha = 0
         view.isHidden = true
-        view.layer.cornerRadius = 8.scale
+        view.layer.cornerRadius = 16.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -259,7 +259,7 @@ private extension PaygateMainView {
     
     func makeSecuredLabel() -> UILabel {
         let attrs = TextAttributes()
-            .textColor(UIColor.black)
+            .textColor(UIColor.white)
             .font(Fonts.SFProRounded.semiBold(size: 13.scale))
             .lineHeight(19.5.scale)
             .letterSpacing(-0.6.scale)
@@ -281,8 +281,8 @@ private extension PaygateMainView {
         let view = UIButton()
         view.setAttributedTitle("Paygate.Continue".localized.attributed(with: attrs), for: .normal)
         view.isHidden = true
-        view.backgroundColor = UIColor(integralRed: 95, green: 70, blue: 245)
-        view.layer.cornerRadius = 30.scale
+        view.backgroundColor = UIColor(integralRed: 243, green: 147, blue: 87)
+        view.layer.cornerRadius = 16.scale
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
@@ -293,7 +293,7 @@ private extension PaygateMainView {
             .font(Fonts.SFProRounded.regular(size: 13.scale))
             .lineHeight(19.5.scale)
             .letterSpacing(-0.6.scale)
-            .textColor(UIColor.black)
+            .textColor(UIColor.white)
             .textAlignment(.center)
             .dictionary
         
