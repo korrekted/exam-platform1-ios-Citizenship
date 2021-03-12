@@ -1184,11 +1184,11 @@
 		9640260D25FA6AC5006A1CBF /* Stats */ = {
 			isa = PBXGroup;
 			children = (
+				9640261525FA6AC5006A1CBF /* Views */,
+				9640261025FA6AC5006A1CBF /* Models */,
 				9640260E25FA6AC5006A1CBF /* StatsViewModel.swift */,
 				9640260F25FA6AC5006A1CBF /* StatsViewController.swift */,
-				9640261025FA6AC5006A1CBF /* Models */,
 				9640261425FA6AC5006A1CBF /* StatsView.swift */,
-				9640261525FA6AC5006A1CBF /* Views */,
 			);
 			path = Stats;
 			sourceTree = "<group>";

@@ -16,6 +16,8 @@ class PassRateCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         makeConstraints()
+        
+        contentView.backgroundColor = UIColor.white
     }
     
     required init?(coder: NSCoder) {
@@ -95,7 +97,7 @@ private extension PassRateCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 20.scale
-        view.backgroundColor = UIColor(integralRed: 95, green: 70, blue: 245)
+        view.backgroundColor = UIColor(integralRed: 243, green: 147, blue: 87)
         contentView.addSubview(view)
         return view
     }
