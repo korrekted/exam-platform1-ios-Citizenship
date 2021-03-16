@@ -14,19 +14,16 @@ final class GetMonetizationResponseMapper {
         else {
             return nil
         }
-        
-        // TODO
-        return .suggest
 
-//        switch mode {
-//        case 1:
-//            // без оплаты/подписки доступен бесплатный контент, пользователя нужно запустить в приложение
-//            return .suggest
-//        case 2:
-//            // без оплаты/подписки невозможно пройти далее онбординга
-//            return .block
-//        default:
-//            return nil
-//        }
+        switch mode {
+        case 1:
+            // без оплаты/подписки доступен бесплатный контент, пользователя нужно запустить в приложение
+            return .suggest
+        case 2:
+            // без оплаты/подписки невозможно пройти далее онбординга
+            return .block
+        default:
+            return nil
+        }
     }
 }
