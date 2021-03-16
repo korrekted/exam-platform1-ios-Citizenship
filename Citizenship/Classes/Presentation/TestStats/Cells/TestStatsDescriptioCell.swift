@@ -53,7 +53,7 @@ private extension TestStatsDescriptioCell {
 private extension TestStatsDescriptioCell {
     func makeDescriptionView() -> TestStatsDescriptionView {
         let view = TestStatsDescriptionView()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor(integralRed: 240, green: 243, blue: 245)
         view.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(view)
         return view
