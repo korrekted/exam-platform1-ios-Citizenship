@@ -264,6 +264,9 @@
 		9667E02626A609EC0098C7F2 /* StatsShareManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667DE8C26A608F10098C7F2 /* StatsShareManager.swift */; };
 		9667E02726A609FB0098C7F2 /* Stats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667DE8226A608F10098C7F2 /* Stats.swift */; };
 		96737E6E2674B90E00230FB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96737E6D2674B90E00230FB6 /* GoogleService-Info.plist */; };
+		96AD34FE274E26960098D472 /* SetSelectCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD34FD274E26960098D472 /* SetSelectCourseRequest.swift */; };
+		96AD3501274E26C10098D472 /* GetSelectedCourseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD3500274E26C10098D472 /* GetSelectedCourseResponse.swift */; };
+		96AD3503274E26DC0098D472 /* GetSelectedCourseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AD3502274E26DC0098D472 /* GetSelectedCourseRequest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -549,6 +552,9 @@
 		9667DF3E26A608F10098C7F2 /* OnboardingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		9667DF3F26A608F10098C7F2 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		96737E6D2674B90E00230FB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		96AD34FD274E26960098D472 /* SetSelectCourseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetSelectCourseRequest.swift; sourceTree = "<group>"; };
+		96AD3500274E26C10098D472 /* GetSelectedCourseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSelectedCourseResponse.swift; sourceTree = "<group>"; };
+		96AD3502274E26DC0098D472 /* GetSelectedCourseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSelectedCourseRequest.swift; sourceTree = "<group>"; };
 		A0A52F1A8F801BCDAD6BE7BA /* Pods-Citizenship.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Citizenship.debug.xcconfig"; path = "Target Support Files/Pods-Citizenship/Pods-Citizenship.debug.xcconfig"; sourceTree = "<group>"; };
 		E02612518E500701392759FA /* Pods-Citizenship.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Citizenship.release.xcconfig"; path = "Target Support Files/Pods-Citizenship/Pods-Citizenship.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -983,6 +989,8 @@
 		9667DE6626A608F10098C7F2 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				96AD34FF274E26B80098D472 /* GetSelectedCourse */,
+				96AD34FC274E267C0098D472 /* SetSelectCourse */,
 				9667DE6726A608F10098C7F2 /* GetCourcesRequest.swift */,
 				9667DE6826A608F10098C7F2 /* GetReferences */,
 				9667DE6B26A608F10098C7F2 /* GetCourcesResponseMapper.swift */,
@@ -1597,6 +1605,23 @@
 			path = Welcome;
 			sourceTree = "<group>";
 		};
+		96AD34FC274E267C0098D472 /* SetSelectCourse */ = {
+			isa = PBXGroup;
+			children = (
+				96AD34FD274E26960098D472 /* SetSelectCourseRequest.swift */,
+			);
+			path = SetSelectCourse;
+			sourceTree = "<group>";
+		};
+		96AD34FF274E26B80098D472 /* GetSelectedCourse */ = {
+			isa = PBXGroup;
+			children = (
+				96AD3500274E26C10098D472 /* GetSelectedCourseResponse.swift */,
+				96AD3502274E26DC0098D472 /* GetSelectedCourseRequest.swift */,
+			);
+			path = GetSelectedCourse;
+			sourceTree = "<group>";
+		};
 		B9B3CF64F9C0AC38F7E56F9B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1838,6 +1863,7 @@
 				9667DF5F26A608F10098C7F2 /* PaygateManagerCore.swift in Sources */,
 				9667E02126A608F20098C7F2 /* OSlideTimeView.swift in Sources */,
 				9667DF9526A608F20098C7F2 /* GetBriefRequest.swift in Sources */,
+				96AD3501274E26C10098D472 /* GetSelectedCourseResponse.swift in Sources */,
 				9667DFAD26A608F20098C7F2 /* SplashViewModel.swift in Sources */,
 				9667E01026A608F20098C7F2 /* WelcomeSlide3View.swift in Sources */,
 				9667DFDD26A608F20098C7F2 /* PaygateOptionView.swift in Sources */,
@@ -1926,6 +1952,7 @@
 				9667DF7126A608F10098C7F2 /* TestStatsManager.swift in Sources */,
 				9667DF4626A608F10098C7F2 /* StringExtension.swift in Sources */,
 				9667DFEA26A608F20098C7F2 /* TestStatsProgressView.swift in Sources */,
+				96AD3503274E26DC0098D472 /* GetSelectedCourseRequest.swift in Sources */,
 				9667DF8226A608F10098C7F2 /* Reference.swift in Sources */,
 				9667DFB326A608F20098C7F2 /* SCTakeTestCell.swift in Sources */,
 				9667DF5526A608F10098C7F2 /* PaddingPickerView.swift in Sources */,
@@ -2012,6 +2039,7 @@
 				9667E01126A608F20098C7F2 /* WelcomeSlide2View.swift in Sources */,
 				9667DF4726A608F10098C7F2 /* GlobalDefinitions.swift in Sources */,
 				9667DFE226A608F20098C7F2 /* TestStatsAnswerCell.swift in Sources */,
+				96AD34FE274E26960098D472 /* SetSelectCourseRequest.swift in Sources */,
 				9667DFAB26A608F20098C7F2 /* SettingsViewController.swift in Sources */,
 				9667E01526A608F20098C7F2 /* OSlideReferencesView.swift in Sources */,
 			);
@@ -2188,7 +2216,7 @@
 				CODE_SIGN_ENTITLEMENTS = Citizenship/Citizenship.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Citizenship/Resource/Info.plist";
@@ -2197,7 +2225,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.9;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Development";
@@ -2217,7 +2245,7 @@
 				CODE_SIGN_ENTITLEMENTS = Citizenship/Citizenship.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				INFOPLIST_FILE = "$(SRCROOT)/Citizenship/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
@@ -2225,7 +2253,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.9;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship AppStore";
@@ -2243,7 +2271,7 @@
 				CODE_SIGN_ENTITLEMENTS = StatsWidgetsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				INFOPLIST_FILE = StatsWidgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -2252,7 +2280,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.9;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship.stats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Stats Widgets Development";
@@ -2270,7 +2298,7 @@
 				CODE_SIGN_ENTITLEMENTS = StatsWidgetsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 2W4U9UWRKZ;
 				INFOPLIST_FILE = StatsWidgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -2279,7 +2307,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.9;
+				MARKETING_VERSION = 2.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship.stats;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Stats Widgets AppStore";
