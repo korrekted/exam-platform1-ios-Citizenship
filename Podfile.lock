@@ -1,16 +1,16 @@
 PODS:
   - Alamofire (5.5.0)
   - Amplitude-iOS (4.10.0)
-  - AppsFlyerFramework (6.5.2):
-    - AppsFlyerFramework/Main (= 6.5.2)
-  - AppsFlyerFramework/Main (6.5.2)
+  - AppsFlyerFramework (6.5.3):
+    - AppsFlyerFramework/Main (= 6.5.3)
+  - AppsFlyerFramework/Main (6.5.3)
   - Branch (1.41.0)
-  - FBAEMKit (12.3.2):
-    - FBSDKCoreKit_Basics (= 12.3.2)
-  - FBSDKCoreKit (12.3.2):
-    - FBAEMKit (= 12.3.2)
-    - FBSDKCoreKit_Basics (= 12.3.2)
-  - FBSDKCoreKit_Basics (12.3.2)
+  - FBAEMKit (13.0.0):
+    - FBSDKCoreKit_Basics (= 13.0.0)
+  - FBSDKCoreKit (13.0.0):
+    - FBAEMKit (= 13.0.0)
+    - FBSDKCoreKit_Basics (= 13.0.0)
+  - FBSDKCoreKit_Basics (13.0.0)
   - Firebase/Analytics (8.12.1):
     - Firebase/Core
   - Firebase/Core (8.12.1):
@@ -126,7 +126,7 @@ PODS:
     - MarqueeLabel (~> 4.0.5)
     - SnapKit (~> 5.0.1)
   - PromisesObjC (2.0.0)
-  - RushSDK (2.8.9):
+  - RushSDK (2.8.12):
     - Alamofire
     - Amplitude-iOS
     - AppsFlyerFramework
@@ -188,17 +188,17 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   RushSDK:
-    :commit: b47164412815c38dfbceed55b9771a34147b482c
+    :commit: 99bd635cee7a83df5b22046b1ed65a3be8bf884e
     :git: https://github.com/AgentChe/RushSDK.git
 
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   Amplitude-iOS: 7d8cdc3408ba35c2e68368fc7c692cd104606b94
-  AppsFlyerFramework: 9f304d91cc80b6579b1206a59220383056b58b47
+  AppsFlyerFramework: daff1a8ac502cef2c9408794bac68c852e3483d4
   Branch: bd6c472d6cab03206877ac86c1241327a3f217d1
-  FBAEMKit: 955ca52eba8219c20f90774e8c6ff8bc7b3192a3
-  FBSDKCoreKit: 678f64eda3f0ff25c189c2ebbfe87b1d96a85a6d
-  FBSDKCoreKit_Basics: 6bee7c1f0932432901781203fa5e587ec5099148
+  FBAEMKit: 11a0bcdc7a88e26ed764bcf56372afc6cbbbdcd9
+  FBSDKCoreKit: 00e1e751257e1005304fa29cb683d2dfe008f41a
+  FBSDKCoreKit_Basics: 96ec2ddb67a032e54f0754ea3d59db6f84f42389
   Firebase: 580d09e8edafc3073ebf09c03fd42e4d80d35fe9
   FirebaseAnalytics: bd10d7706ba8d6e01ea2816f8fe9e9b881cb0918
   FirebaseCore: 8138de860a90ca7eec5e324da5788fb0ebf1d93c
@@ -214,7 +214,7 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   NotificationBannerSwift: 7021be2338f8f29cf424b0aca43da462bf9e2a1a
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  RushSDK: d752555cd3d7c97bda8db784128fec42134d13bc
+  RushSDK: 5d5142c86f48f2ef12f3899691342de9bc880932
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
