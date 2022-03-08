@@ -39,6 +39,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FacebookAppID</key>
 	<string>1121657864998355</string>
+	<key>FacebookClientToken</key>
+	<string>24295f4532fd38275e9c51007169b99f</string>
 	<key>FacebookDisplayName</key>
 	<string>US Citizenship Exam</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
