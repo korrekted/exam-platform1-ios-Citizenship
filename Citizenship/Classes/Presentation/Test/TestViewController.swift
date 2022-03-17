@@ -29,6 +29,17 @@ final class TestViewController: UIViewController {
         
         let courseName = viewModel.courseName
         
+        viewModel.activityIndicator
+            .drive(onNext: { [weak self] activity in
+                guard let self = self else {
+                    return
+                }
+                
+                self.mainView.tableView.isHidden = activity
+                activity ? self.mainView.activityView.startAnimating() : self.mainView.activityView.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
         viewModel.question
             .drive(Binder(self) { base, element in
                 base.mainView.tableView.setup(question: element)
@@ -158,18 +169,8 @@ final class TestViewController: UIViewController {
             .bind(to: Binder(self) { base, content in
                 switch content {
                 case let .image(url):
-                    let imageView = UIImageView()
-                    imageView.contentMode = .scaleAspectFit
-                    do {
-                        try imageView.image = UIImage(data: Data(contentsOf: url))
-                        let controller = UIViewController()
-                        controller.view.backgroundColor = .black
-                        controller.view.addSubview(imageView)
-                        imageView.frame = controller.view.bounds
-                        base.present(controller, animated: true)
-                    } catch {
-                        
-                    }
+                    let controller = PhotoViewController.make(imageURL: url)
+                    base.present(controller, animated: true)
                 case let .video(url):
                     let controller = AVPlayerViewController()
                     controller.view.backgroundColor = .black

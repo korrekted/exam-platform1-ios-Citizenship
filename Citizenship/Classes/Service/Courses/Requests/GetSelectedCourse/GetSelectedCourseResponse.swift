@@ -1,8 +1,8 @@
 //
 //  GetSelectedCourseResponse.swift
-//  Citizenship
+//  Nursing
 //
-//  Created by Andrey Chernyshev on 24.11.2021.
+//  Created by Andrey Chernyshev on 18.11.2021.
 //
 
 final class GetSelectedCourseResponse {
@@ -14,21 +14,21 @@ final class GetSelectedCourseResponse {
         else {
             return nil
         }
-
+        
         guard
-             let id = courseJSON["id"] as? Int,
-             let name = courseJSON["name"] as? String,
-             let subTitle = courseJSON["sub"] as? String,
-             let isMain = courseJSON["main"] as? Bool,
-             let sort = courseJSON["sort"] as? Int
-         else {
-             return nil
-         }
-
-         return Course(id: id,
-                       name: name,
-                       subTitle: subTitle,
-                       isMain: isMain,
-                       sort: sort)
+            let id = courseJSON["id"] as? Int,
+            let name = courseJSON["name"] as? String,
+            let subTitle = courseJSON["sub"] as? String,
+            let isMain = courseJSON["main"] as? Bool,
+            let sort = courseJSON["sort"] as? Int
+        else {
+            return nil
+        }
+        
+        return Course(id: id,
+                      name: name,
+                      subTitle: subTitle,
+                      isMain: isMain,
+                      sort: sort)
     }
 }

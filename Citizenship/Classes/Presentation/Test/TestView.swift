@@ -11,6 +11,7 @@ final class TestView: UIView {
     lazy var closeButton = makeCloseButton()
     lazy var tableView = makeTableView()
     lazy var bottomView = makeBottomView()
+    lazy var activityView = makeActivityView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,6 +60,11 @@ private extension TestView {
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
             bottomView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
+        
+        NSLayoutConstraint.activate([
+            activityView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            activityView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }
 
@@ -95,6 +101,18 @@ private extension TestView {
     
     func makeBottomView() -> BottomView {
         let view = BottomView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeActivityView() -> UIActivityIndicatorView {
+        let view = UIActivityIndicatorView()
+        if #available(iOS 13.0, *) {
+            view.style = .large
+        }
+        view.color = Appearance.mainColor
+        view.hidesWhenStopped = true
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

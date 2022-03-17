@@ -55,29 +55,29 @@ private extension SplashViewModel {
     }
     
     func makeStep() -> Single<Step> {
-         coursesManager
+        coursesManager
             .retrieveSelectedCourse(forceUpdate: true)
             .catchAndReturn(nil)
             .map { [weak self] selectedCourse -> Step in
-                 guard let self = self else {
-                     return .onboarding
-                 }
-
-                 if selectedCourse != nil {
-                     return .course
-                 }
-
-                 guard OnboardingViewController.wasViewed() else {
-                     return .onboarding
-                 }
-
-                 if self.needPayment() {
-                     return .paygate
-                 }
-
-                 return .course
-             }
-     }
+                guard let self = self else {
+                    return .onboarding
+                }
+                
+                if selectedCourse != nil {
+                    return .course
+                }
+                
+                guard OnboardingViewController.wasViewed() else {
+                    return .onboarding
+                }
+                
+                if self.needPayment() {
+                    return .paygate
+                }
+                
+                return .course
+            }
+    }
     
     func needPayment() -> Bool {
         let activeSubscription = sessionManager.getSession()?.activeSubscription ?? false

@@ -1,15 +1,15 @@
 //
-//  OSlideReferencesView.swift
-//  FNP
+//  SSlideReferencesView.swift
+//  CSCS
 //
-//  Created by Andrey Chernyshev on 10.07.2021.
+//  Created by Андрей Чернышев on 16.03.2022.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-final class OSlideReferencesView: OSlideView {
+final class SSlideReferencesView: SSlideView {
     lazy var titleLabel = makeTitleLabel()
     lazy var tableView = makeTableView()
     lazy var button = makeButton()
@@ -18,8 +18,8 @@ final class OSlideReferencesView: OSlideView {
     
     private lazy var coursesManager = CoursesManagerCore()
     
-    override init(step: OnboardingView.Step, scope: OnboardingScope) {
-        super.init(step: step, scope: scope)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         
         makeConstraints()
     }
@@ -45,7 +45,7 @@ final class OSlideReferencesView: OSlideView {
 }
 
 // MARK: Make constraints
-private extension OSlideReferencesView {
+private extension SSlideReferencesView {
     func makeConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
@@ -70,7 +70,7 @@ private extension OSlideReferencesView {
 }
 
 // MARK: Lazy initialization
-private extension OSlideReferencesView {
+private extension SSlideReferencesView {
     func makeTitleLabel() -> UILabel {
         let attrs = TextAttributes()
             .textColor(UIColor.black)
