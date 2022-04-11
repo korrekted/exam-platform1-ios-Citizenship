@@ -62,9 +62,10 @@ private extension TestViewModel {
         let questions = testElement
             .compactMap { $0.element?.questions }
         
+        let mode = testMode.asObservable()
+        
         let dataSource = Observable
-            .combineLatest(questions, selectedAnswers)
-            .withLatestFrom(testMode) { ($0.0, $0.1, $1) }
+            .combineLatest(questions, selectedAnswers, mode) { ($0, $1, $2) }
             .scan([], accumulator: questionAccumulator)
         
         return dataSource
