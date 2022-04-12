@@ -11,6 +11,8 @@ import RxSwift
 import RxCocoa
 
 final class OSlidePlanView: OSlideView {
+    weak var vc: UIViewController?
+    
     lazy var titleLabel = makeTitleLabel()
     lazy var chartView = makeChartView()
     lazy var cell1 = makeCell(title: "Onboarding.SlidePlan.Cell1", image: "Onboarding.SlidePlan.Cell1")
@@ -22,6 +24,8 @@ final class OSlidePlanView: OSlideView {
     private lazy var profileManager = ProfileManagerCore()
     
     private lazy var disposeBag = DisposeBag()
+    
+    private lazy var tryAgainTrigger = PublishRelay<Void>()
     
     override init(step: OnboardingView.Step, scope: OnboardingScope) {
         super.init(step: step, scope: scope)
@@ -46,7 +50,7 @@ final class OSlidePlanView: OSlideView {
 // MARK: Private
 private extension OSlidePlanView {
     func initialize() {
-        button.rx.tap
+        Observable.merge(button.rx.tap.asObservable(), tryAgainTrigger.asObservable())
             .flatMapLatest { [weak self] _ -> Single<Bool> in
                 guard let self = self else {
                     return .never()
@@ -64,14 +68,24 @@ private extension OSlidePlanView {
             }
             .asDriver(onErrorJustReturn: false)
             .drive(onNext: { [weak self] success in
-                guard success else {
-                    Toast.notify(with: "Onboarding.FailedToSave".localized, style: .danger)
+                guard let self = self else {
                     return
                 }
                 
-                self?.onNext()
+                success ? self.onNext() : self.openError()
             })
             .disposed(by: disposeBag)
+    }
+    
+    func openError() {
+        let tryAgainVC = TryAgainViewController.make { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
+            self.tryAgainTrigger.accept(Void())
+        }
+        vc?.present(tryAgainVC, animated: true)
     }
 }
 

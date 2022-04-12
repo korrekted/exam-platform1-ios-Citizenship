@@ -54,7 +54,6 @@ private extension TestView {
             tableView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
         
-        
         NSLayoutConstraint.activate([
             bottomView.leadingAnchor.constraint(equalTo: leadingAnchor),
             bottomView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -63,7 +62,9 @@ private extension TestView {
         
         NSLayoutConstraint.activate([
             activityView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            activityView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            activityView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            activityView.widthAnchor.constraint(equalToConstant: 40.scale),
+            activityView.heightAnchor.constraint(equalToConstant: 40.scale)
         ])
     }
 }
@@ -106,13 +107,8 @@ private extension TestView {
         return view
     }
     
-    func makeActivityView() -> UIActivityIndicatorView {
-        let view = UIActivityIndicatorView()
-        if #available(iOS 13.0, *) {
-            view.style = .large
-        }
-        view.color = Appearance.mainColor
-        view.hidesWhenStopped = true
+    func makeActivityView() -> Spinner {
+        let view = Spinner(size: CGSize(width: 32.scale, height: 32.scale))
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

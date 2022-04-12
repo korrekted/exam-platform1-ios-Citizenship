@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import AVFoundation
 import AVKit
+import RushSDK
 
 final class TestViewController: UIViewController {
     lazy var mainView = TestView()
@@ -29,7 +30,7 @@ final class TestViewController: UIViewController {
         
         let courseName = viewModel.courseName
         
-        viewModel.activityIndicator
+        viewModel.loadTestActivityIndicator
             .drive(onNext: { [weak self] activity in
                 guard let self = self else {
                     return
@@ -37,6 +38,16 @@ final class TestViewController: UIViewController {
                 
                 self.mainView.tableView.isHidden = activity
                 activity ? self.mainView.activityView.startAnimating() : self.mainView.activityView.stopAnimating()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.sendAnswerActivityIndicator
+            .drive(onNext: { [weak self] activity in
+                guard let self = self else {
+                    return
+                }
+                
+                activity ? self.mainView.bottomView.preloader.start() : self.mainView.bottomView.preloader.stop()
             })
             .disposed(by: disposeBag)
         
@@ -194,7 +205,7 @@ final class TestViewController: UIViewController {
             .filter { $0 }
             .emit { [weak self] _ in
                 self?.dismiss(animated: true, completion: {
-                    UIApplication.shared.keyWindow?.rootViewController?.present(PaygateViewController.make(), animated: true)
+                    UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController?.present(PaygateViewController.make(), animated: true)
                 })
             }
             .disposed(by: disposeBag)
@@ -223,6 +234,14 @@ final class TestViewController: UIViewController {
                 RateManagerCore().showFirstAfterPassRateAlert()
             })
             .disposed(by: disposeBag)
+        
+        viewModel.tryAgain = { [weak self] error -> Observable<Void> in
+            guard let self = self else {
+                return .never()
+            }
+            
+            return self.openError()
+        }
     }
 }
 
@@ -264,5 +283,22 @@ private extension TestViewController {
             .logEvent(name: "Question Tap", parameters: ["course": courseName,
                                                          "mode": name,
                                                          "what": what])
+    }
+    
+    func openError() -> Observable<Void> {
+        Observable<Void>
+            .create { [weak self] observe in
+                guard let self = self else {
+                    return Disposables.create()
+                }
+                
+                let vc = TryAgainViewController.make {
+                    observe.onNext(())
+                }
+                self.present(vc, animated: true)
+                
+                return Disposables.create()
+            }
+        
     }
 }

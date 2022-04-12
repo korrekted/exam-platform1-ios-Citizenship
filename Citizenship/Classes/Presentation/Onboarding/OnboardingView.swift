@@ -26,8 +26,7 @@ final class OnboardingView: UIView {
     lazy var progressView = makeProgressView()
     lazy var previousButton = makePreviousButton()
     
-    private lazy var scope = OnboardingScope()
-    
+    lazy var planView = OSlidePlanView(step: .plan, scope: scope)
     private lazy var contentViews: [OSlideView] = {
         [
             OSlideWelcomeView(step: .welcome, scope: scope),
@@ -42,9 +41,11 @@ final class OnboardingView: UIView {
             OPushView(step: .push, scope: scope),
             OSlideWidgetsView(step: .widgets, scope: scope),
             OSlidePreloaderView(step: .preloader, scope: scope),
-            OSlidePlanView(step: .plan, scope: scope)
+            planView
         ]
     }()
+    
+    private lazy var scope = OnboardingScope()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

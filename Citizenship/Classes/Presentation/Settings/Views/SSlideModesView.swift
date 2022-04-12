@@ -1,13 +1,14 @@
 //
 //  SSlideModesView.swift
-//  CSCS
+//  Nursing
 //
-//  Created by Андрей Чернышев on 16.03.2022.
+//  Created by Андрей Чернышев on 31.03.2022.
 //
 
 import UIKit
 import RxSwift
 import RxCocoa
+import RushSDK
 
 final class SSlideModesView: SSlideView {
     lazy var titleLabel = makeTitleLabel()
@@ -24,6 +25,9 @@ final class SSlideModesView: SSlideView {
                                       subtitle: "Onboarding.Modes.Cell3.Subtitle",
                                       tag: 2)
     lazy var button = makeButton()
+    lazy var preloader = makePreloader()
+    
+    private lazy var activityIndicator = RxActivityIndicator()
     
     private lazy var disposeBag = DisposeBag()
     
@@ -35,6 +39,7 @@ final class SSlideModesView: SSlideView {
         makeConstraints()
         initialize()
         changeEnabled()
+        setup(buttonTitle: "Continue".localized)
     }
     
     required init?(coder: NSCoder) {
@@ -68,7 +73,7 @@ extension SSlideModesView {
 private extension SSlideModesView {
     func initialize() {
         button.rx.tap
-            .flatMapLatest { [weak self] _ -> Single<Bool> in
+            .flatMapLatest { [weak self] _ -> Observable<Bool> in
                 guard let self = self else {
                     return .never()
                 }
@@ -85,6 +90,7 @@ private extension SSlideModesView {
                 
                 return self.profileManager
                     .set(testMode: mode)
+                    .trackActivity(self.activityIndicator)
                     .map { true }
                     .catchAndReturn(false)
             }
@@ -131,6 +137,16 @@ private extension SSlideModesView {
                 }
             })
             .disposed(by: disposeBag)
+        
+        activityIndicator
+            .drive(onNext: { [weak self] activity in
+                guard let self = self else {
+                    return
+                }
+                
+                self.activity(activity)
+            })
+            .disposed(by: disposeBag)
     }
     
     @objc
@@ -166,6 +182,21 @@ private extension SSlideModesView {
         button.isEnabled = !isEmpty
         button.alpha = isEmpty ? 0.4 : 1
     }
+    
+    func activity(_ activity: Bool) {
+        let title = activity ? "" : "Continue".localized
+        setup(buttonTitle: title)
+        
+        activity ? preloader.startAnimating() : preloader.stopAnimating()
+    }
+    
+    func setup(buttonTitle: String) {
+        let attrs = TextAttributes()
+            .textColor(UIColor.white)
+            .font(Fonts.SFProRounded.semiBold(size: 20.scale))
+            .textAlignment(.center)
+        button.setAttributedTitle(buttonTitle.attributed(with: attrs), for: .normal)
+    }
 }
 
 // MARK: Make constraints
@@ -178,20 +209,20 @@ private extension SSlideModesView {
         ])
         
         NSLayoutConstraint.activate([
-            fullSupportCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
-            fullSupportCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
-            fullSupportCell.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 44.scale)
+            fullSupportCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26.scale),
+            fullSupportCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26.scale),
+            fullSupportCell.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: ScreenSize.isIphoneXFamily ? 40.scale : 20.scale)
         ])
         
         NSLayoutConstraint.activate([
-            withoutExplanationsCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
-            withoutExplanationsCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
+            withoutExplanationsCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26.scale),
+            withoutExplanationsCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26.scale),
             withoutExplanationsCell.topAnchor.constraint(equalTo: fullSupportCell.bottomAnchor, constant: 12.scale)
         ])
         
         NSLayoutConstraint.activate([
-            examStyleCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
-            examStyleCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16.scale),
+            examStyleCell.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26.scale),
+            examStyleCell.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26.scale),
             examStyleCell.topAnchor.constraint(equalTo: withoutExplanationsCell.bottomAnchor, constant: 12.scale)
         ])
         
@@ -199,7 +230,14 @@ private extension SSlideModesView {
             button.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 26.scale),
             button.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -26.scale),
             button.heightAnchor.constraint(equalToConstant: 60.scale),
-            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -70.scale : -30.scale)
+            button.bottomAnchor.constraint(equalTo: bottomAnchor, constant: ScreenSize.isIphoneXFamily ? -70.scale : -20.scale)
+        ])
+        
+        NSLayoutConstraint.activate([
+            preloader.widthAnchor.constraint(equalToConstant: 24.scale),
+            preloader.heightAnchor.constraint(equalToConstant: 24.scale),
+            preloader.centerXAnchor.constraint(equalTo: button.centerXAnchor),
+            preloader.centerYAnchor.constraint(equalTo: button.centerYAnchor)
         ])
     }
 }
@@ -210,7 +248,7 @@ private extension SSlideModesView {
         let attrs = TextAttributes()
             .textColor(UIColor.black)
             .font(Fonts.SFProRounded.bold(size: 27.scale))
-            .lineHeight(32.scale)
+            .lineHeight(32.4.scale)
             .textAlignment(.center)
         
         let view = UILabel()
@@ -241,15 +279,16 @@ private extension SSlideModesView {
     }
     
     func makeButton() -> UIButton {
-        let attrs = TextAttributes()
-            .textColor(UIColor.white)
-            .font(Fonts.SFProRounded.semiBold(size: 20.scale))
-            .textAlignment(.center)
-        
         let view = UIButton()
         view.backgroundColor = Appearance.mainColor
         view.layer.cornerRadius = 30.scale
-        view.setAttributedTitle("Onboarding.Proceed".localized.attributed(with: attrs), for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makePreloader() -> Spinner {
+        let view = Spinner(size: CGSize(width: 24.scale, height: 24.scale), style: .white)
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view

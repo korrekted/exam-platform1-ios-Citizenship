@@ -7,9 +7,9 @@
 
 import RxSwift
 import RxCocoa
+import RushSDK
 
 final class TestViewModel {
-    
     var activeSubscription = false
     
     let testType = BehaviorRelay<TestType?>(value: nil)
@@ -17,8 +17,6 @@ final class TestViewModel {
     let didTapConfirm = PublishRelay<Void>()
     let didTapSubmit = PublishRelay<Void>()
     let answers = BehaviorRelay<AnswerElement?>(value: nil)
-    
-    lazy var activityIndicator = RxActivityIndicator()
     
     lazy var courseName = makeCourseName()
     lazy var question = makeQuestion()
@@ -28,6 +26,13 @@ final class TestViewModel {
     lazy var testMode = makeTestMode()
     lazy var errorMessage = makeErrorMessage()
     lazy var needPayment = makeNeedPayment()
+    
+    lazy var loadTestActivityIndicator = RxActivityIndicator()
+    lazy var sendAnswerActivityIndicator = RxActivityIndicator()
+    
+    var tryAgain: ((Error) -> (Observable<Void>))?
+    
+    private lazy var observableRetrySingle = ObservableRetrySingle()
     
     private lazy var questionManager = QuestionManagerCore()
     private lazy var courseManager = CoursesManagerCore()
@@ -82,6 +87,14 @@ private extension TestViewModel {
             return .empty()
         }
         
+        func trigger(error: Error) -> Observable<Void> {
+            guard let tryAgain = self.tryAgain?(error) else {
+                return .empty()
+            }
+            
+            return tryAgain
+        }
+        
         return testType
             .compactMap { $0 }
             .flatMapLatest { [weak self] type -> Observable<Event<Test>> in
@@ -111,7 +124,12 @@ private extension TestViewModel {
                 return test
                     .compactMap { $0 }
                     .asObservable()
-                    .trackActivity(self.activityIndicator)
+                    .trackActivity(self.loadTestActivityIndicator)
+                    .retry(when: { errorObs in
+                        errorObs.flatMap { error in
+                            trigger(error: error)
+                        }
+                    })
                     .materialize()
                     .filter {
                         guard case .completed = $0 else { return true }
@@ -152,16 +170,36 @@ private extension TestViewModel {
                 ($0, $1.element?.userTestId)
                 
             }
-            .flatMapLatest { [questionManager] element, userTestId -> Observable<Bool> in
-                guard let userTestId = userTestId else { return .just(false) }
+            .flatMapLatest { [weak self] element, userTestId -> Observable<Bool> in
+                guard let self = self else {
+                    return .never()
+                }
                 
-                return questionManager
-                    .sendAnswer(
-                        questionId: element.questionId,
-                        userTestId: userTestId,
-                        answerIds: element.answerIds
-                    )
-                    .catchAndReturn(nil)
+                guard let userTestId = userTestId else {
+                    return .just(false)
+                }
+                
+                func source() -> Single<Bool?> {
+                    self.questionManager
+                        .sendAnswer(
+                            questionId: element.questionId,
+                            userTestId: userTestId,
+                            answerIds: element.answerIds
+                        )
+                }
+                
+                func trigger(error: Error) -> Observable<Void> {
+                    guard let tryAgain = self.tryAgain?(error) else {
+                        return .empty()
+                    }
+                    
+                    return tryAgain
+                }
+                
+                return self.observableRetrySingle
+                    .retry(source: { source() },
+                           trigger: { trigger(error: $0) })
+                    .trackActivity(self.sendAnswerActivityIndicator)
                     .compactMap { $0 }
                     .asObservable()
             }
@@ -192,8 +230,22 @@ private extension TestViewModel {
     }
     
     func makeTestMode() -> Driver<TestMode?> {
-        profileManager
-            .obtainTestMode()
+        func source() -> Single<TestMode?> {
+            profileManager
+                .obtainTestMode()
+        }
+        
+        func trigger(error: Error) -> Observable<Void> {
+            guard let tryAgain = self.tryAgain?(error) else {
+                return .empty()
+            }
+            
+            return tryAgain
+        }
+        
+        return self.observableRetrySingle
+            .retry(source: { source() },
+                   trigger: { trigger(error: $0) })
             .asDriver(onErrorJustReturn: nil)
     }
 }
@@ -353,7 +405,6 @@ private extension TestViewModel {
 }
 
 private extension TestViewModel {
-    
     func logAnswerAnalitycs(isCorrect: Bool) {
         guard let type = testType.value, let courseName = courseManager.getSelectedCourse()?.name else {
             return

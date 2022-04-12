@@ -45,6 +45,20 @@ extension ProfileManagerCore {
                 return self.notifyAboutChangedIfNotNil(testMode: testMode)
             }
     }
+    
+    func syncTokens(oldToken: String, newToken: String) -> Single<Void> {
+        let request = SyncTokensRequest(oldToken: oldToken, newToken: newToken)
+        
+        return defaultRequestWrapper
+            .callServerApi(requestBody: request)
+            .map { _ in Void() }
+    }
+    
+    func login(userToken: String) -> Single<Void> {
+        defaultRequestWrapper
+            .callServerApi(requestBody: LoginRequest(userToken: userToken))
+            .map { _ in Void() }
+    }
 }
 
 // MARK: Test Mode
