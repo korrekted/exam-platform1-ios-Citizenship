@@ -6,7 +6,7 @@
 	<string>development</string>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.citizenship.widgets</string>
+		<string>group.citizenship.widget</string>
 	</array>
 </dict>
 </plist>
