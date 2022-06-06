@@ -10,6 +10,7 @@ import UIKit
 final class CoursesView: UIView {
     lazy var titleLabel = makeTitleLabel()
     lazy var collectionView = makeCollectionView()
+    lazy var bottomGradientView = makeBottomGradientView()
     lazy var button = makeButton()
     lazy var preloader = makePreloader()
     
@@ -58,7 +59,14 @@ private extension CoursesView {
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.scale),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 32.scale),
-            collectionView.bottomAnchor.constraint(equalTo: button.topAnchor, constant: -28.scale)
+            collectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            bottomGradientView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            bottomGradientView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            bottomGradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            bottomGradientView.heightAnchor.constraint(equalToConstant: ScreenSize.isIphoneXFamily ? 201.scale : 161.scale)
         ])
         
         NSLayoutConstraint.activate([
@@ -101,7 +109,24 @@ private extension CoursesView {
         
         let view = CoursesCollectionView(frame: .zero, collectionViewLayout: layout)
         view.backgroundColor = UIColor.clear
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: ScreenSize.isIphoneXFamily ? 140.scale : 100.scale, right: 0)
         view.showsVerticalScrollIndicator = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(view)
+        return view
+    }
+    
+    func makeBottomGradientView() -> GradientView {
+        let view = GradientView()
+        view.gradientLayer.colors = [
+            UIColor(integralRed: 235, green: 244, blue: 244, alpha: 0).cgColor,
+            UIColor(integralRed: 235, green: 244, blue: 244, alpha: 1).cgColor
+        ]
+        view.gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        view.gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        view.gradientLayer.locations = [0, 0.5]
+        view.backgroundColor = UIColor.clear
+        view.isUserInteractionEnabled = false
         view.translatesAutoresizingMaskIntoConstraints = false
         addSubview(view)
         return view
