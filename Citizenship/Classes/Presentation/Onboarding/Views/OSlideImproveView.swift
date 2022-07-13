@@ -4,7 +4,6 @@
 //
 //  Created by Andrey Chernyshev on 12.07.2021.
 //
-
 import UIKit
 
 final class OSlideImproveView: OSlideView {
