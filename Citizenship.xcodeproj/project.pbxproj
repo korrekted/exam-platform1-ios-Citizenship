@@ -31,6 +31,7 @@
 		9667DDFF26A5F7420098C7F2 /* MediumRateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9667DDF326A5F7410098C7F2 /* MediumRateWidget.swift */; };
 		9667DE0226A5F7B40098C7F2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9640252B25FA6A46006A1CBF /* Localizable.strings */; };
 		96737E6E2674B90E00230FB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96737E6D2674B90E00230FB6 /* GoogleService-Info.plist */; };
+		DE1D022E28CB1F0E003AC1FD /* Onboarding.Chart.json in Resources */ = {isa = PBXBuildFile; fileRef = DE1D022D28CB1F0E003AC1FD /* Onboarding.Chart.json */; };
 		DEBF89DE287ECDB000F8DC0F /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF8819287ECDB000F8DC0F /* UIColorExtension.swift */; };
 		DEBF89DF287ECDB000F8DC0F /* Collection+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF881A287ECDB000F8DC0F /* Collection+Extension.swift */; };
 		DEBF89E0287ECDB000F8DC0F /* Observable+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF881B287ECDB000F8DC0F /* Observable+Utils.swift */; };
@@ -333,7 +334,6 @@
 		DEBF8B09287ECDB000F8DC0F /* OImproveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C0287ECDB000F8DC0F /* OImproveCell.swift */; };
 		DEBF8B0A287ECDB000F8DC0F /* ReferencesTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C2287ECDB000F8DC0F /* ReferencesTableCell.swift */; };
 		DEBF8B0B287ECDB000F8DC0F /* ReferencesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C3287ECDB000F8DC0F /* ReferencesTableView.swift */; };
-		DEBF8B0C287ECDB000F8DC0F /* Onboarding.Chart.json in Resources */ = {isa = PBXBuildFile; fileRef = DEBF89C5287ECDB000F8DC0F /* Onboarding.Chart.json */; };
 		DEBF8B0D287ECDB000F8DC0F /* OWhenStudyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C6287ECDB000F8DC0F /* OWhenStudyCell.swift */; };
 		DEBF8B0E287ECDB000F8DC0F /* WelcomeSlide1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C8287ECDB000F8DC0F /* WelcomeSlide1View.swift */; };
 		DEBF8B0F287ECDB000F8DC0F /* WelcomeSlideIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBF89C9287ECDB000F8DC0F /* WelcomeSlideIndicatorView.swift */; };
@@ -420,6 +420,7 @@
 		9667DE0826A602D30098C7F2 /* Citizenship.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Citizenship.entitlements; sourceTree = "<group>"; };
 		96737E6D2674B90E00230FB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A0A52F1A8F801BCDAD6BE7BA /* Pods-Citizenship.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Citizenship.debug.xcconfig"; path = "Target Support Files/Pods-Citizenship/Pods-Citizenship.debug.xcconfig"; sourceTree = "<group>"; };
+		DE1D022D28CB1F0E003AC1FD /* Onboarding.Chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.Chart.json; sourceTree = "<group>"; };
 		DEBF8819287ECDB000F8DC0F /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		DEBF881A287ECDB000F8DC0F /* Collection+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Collection+Extension.swift"; sourceTree = "<group>"; };
 		DEBF881B287ECDB000F8DC0F /* Observable+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Observable+Utils.swift"; sourceTree = "<group>"; };
@@ -722,7 +723,6 @@
 		DEBF89C0287ECDB000F8DC0F /* OImproveCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OImproveCell.swift; sourceTree = "<group>"; };
 		DEBF89C2287ECDB000F8DC0F /* ReferencesTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTableCell.swift; sourceTree = "<group>"; };
 		DEBF89C3287ECDB000F8DC0F /* ReferencesTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReferencesTableView.swift; sourceTree = "<group>"; };
-		DEBF89C5287ECDB000F8DC0F /* Onboarding.Chart.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Onboarding.Chart.json; sourceTree = "<group>"; };
 		DEBF89C6287ECDB000F8DC0F /* OWhenStudyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OWhenStudyCell.swift; sourceTree = "<group>"; };
 		DEBF89C8287ECDB000F8DC0F /* WelcomeSlide1View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeSlide1View.swift; sourceTree = "<group>"; };
 		DEBF89C9287ECDB000F8DC0F /* WelcomeSlideIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeSlideIndicatorView.swift; sourceTree = "<group>"; };
@@ -2273,7 +2273,7 @@
 		DEBF89C4287ECDB000F8DC0F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				DEBF89C5287ECDB000F8DC0F /* Onboarding.Chart.json */,
+				DE1D022D28CB1F0E003AC1FD /* Onboarding.Chart.json */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2374,11 +2374,11 @@
 			files = (
 				DEBF8B2B287ED07800F8DC0F /* SF-Pro-Rounded-Bold.otf in Resources */,
 				DEBF8B2C287ED07800F8DC0F /* SF-Pro-Rounded-Black.otf in Resources */,
-				DEBF8B0C287ECDB000F8DC0F /* Onboarding.Chart.json in Resources */,
 				96737E6E2674B90E00230FB6 /* GoogleService-Info.plist in Resources */,
 				9640252925FA6A46006A1CBF /* Localizable.strings in Resources */,
 				964024E125FA631F006A1CBF /* Assets.xcassets in Resources */,
 				9640271025FA6C27006A1CBF /* LaunchScreen.storyboard in Resources */,
+				DE1D022E28CB1F0E003AC1FD /* Onboarding.Chart.json in Resources */,
 				9640251E25FA69FE006A1CBF /* SF-Pro-Rounded-Semibold.otf in Resources */,
 				9640251F25FA69FE006A1CBF /* SF-Pro-Rounded-Regular.otf in Resources */,
 			);
@@ -2960,7 +2960,7 @@
 				CODE_SIGN_ENTITLEMENTS = Citizenship/Citizenship.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZY9AXRCYBM;
 				INFOPLIST_FILE = "$(SRCROOT)/Citizenship/Resource/Info.plist";
@@ -2969,7 +2969,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Prod";
@@ -2989,7 +2989,7 @@
 				CODE_SIGN_ENTITLEMENTS = Citizenship/Citizenship.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = ZY9AXRCYBM;
 				INFOPLIST_FILE = "$(SRCROOT)/Citizenship/Resource/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -2997,7 +2997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Prod";
@@ -3015,7 +3015,7 @@
 				CODE_SIGN_ENTITLEMENTS = StatsWidgetsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = ZY9AXRCYBM;
 				INFOPLIST_FILE = StatsWidgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -3024,7 +3024,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Widget Prod";
@@ -3042,7 +3042,7 @@
 				CODE_SIGN_ENTITLEMENTS = StatsWidgetsExtension.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 30;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = ZY9AXRCYBM;
 				INFOPLIST_FILE = StatsWidgets/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
@@ -3051,7 +3051,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 3.1.0;
+				MARKETING_VERSION = 3.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = exam.uscitizenship.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "Citizenship Widget Prod";
