@@ -92,7 +92,7 @@ private extension Spinner {
     func imageName() -> String {
         switch style {
         case .blue:
-            return "Spinner.Main"
+            return "Spinner.Blue"
         case .white:
             return "Spinner.White"
         }
